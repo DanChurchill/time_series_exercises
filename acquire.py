@@ -9,7 +9,6 @@ def get_items(url='https://python.zgulde.net/api/v1/items?page=1'):
     accepts an url, returns a dataframe with items information
     '''
     max_page = requests.get(url).json()['payload']['max_page'] + 1
-    output = []
     for i in range(1,max_page):
         url = url[:-1] + str(i)
         if i == 1:
@@ -36,7 +35,6 @@ def get_sales(url = 'https://python.zgulde.net/api/v1/sales?page='):
     accepts an url, returns a dataframe with sales information
     '''
     max_page = requests.get(url+'1').json()['payload']['max_page'] + 1
-    output = []
     for i in range(1,max_page):
         new_url = url + str(i)
         if i == 1:
