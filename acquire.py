@@ -51,8 +51,10 @@ def combine(sales, stores, items):
     
     '''
     combo = sales.merge(items, left_on='item', right_on='item_id')
-    return combo.merge(stores, left_on='store', right_on='store_id')
+    combo = combo.merge(stores, left_on='store', right_on='store_id')
+    combo.drop(columns=['item', 'store'], inplace=True)
 
+    return combo
 
 def superstore():
     '''
